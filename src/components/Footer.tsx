@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 
@@ -31,24 +32,24 @@ export function Footer() {
           <div className="text-center">
             <h4 className="font-semibold text-primary mb-4">Quick Links</h4>
             <div className="flex flex-wrap justify-center gap-4">
-              <button 
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link 
+                to="/about"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 About
-              </button>
-              <button 
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              </Link>
+              <Link 
+                to="/projects"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Projects
-              </button>
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              </Link>
+              <Link 
+                to="/contact"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
 

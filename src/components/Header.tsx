@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Download } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +18,9 @@ export function Header() {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleResumeDownload = () => {
@@ -27,11 +31,11 @@ export function Header() {
   };
 
   const navItems = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About', id: 'about' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Contact', id: 'contact' }
+    { label: 'Home', path: '/', id: 'hero' },
+    { label: 'About', path: '/about', id: 'about' },
+    { label: 'Skills', path: '/skills', id: 'skills' },
+    { label: 'Projects', path: '/projects', id: 'projects' },
+    { label: 'Contact', path: '/contact', id: 'contact' }
   ];
 
   return (
@@ -45,23 +49,28 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div 
+          <Link 
+            to="/"
             className="text-xl font-bold bg-gradient-cyber bg-clip-text text-transparent cursor-pointer"
-            onClick={() => scrollToSection('hero')}
           >
             Hydra King
-          </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:glow-primary"
+                to={item.path}
+                onClick={() => item.path === '/' && scrollToSection(item.id)}
+                className={`transition-colors duration-300 hover:glow-primary ${
+                  location.pathname === item.path 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
