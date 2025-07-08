@@ -62,12 +62,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Hydra King custom colors
+				// Enhanced Hydra King custom colors
 				'glow-primary': 'hsl(var(--glow-primary))',
 				'glow-secondary': 'hsl(var(--glow-secondary))',
 				'glow-accent': 'hsl(var(--glow-accent))',
 				'terminal-green': 'hsl(var(--terminal-green))',
-				'warning-orange': 'hsl(var(--warning-orange))'
+				'warning-orange': 'hsl(var(--warning-orange))',
+				'electric-blue': 'hsl(var(--electric-blue))',
+				'neon-pink': 'hsl(var(--neon-pink))',
+				'cyber-gold': 'hsl(var(--cyber-gold))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -104,8 +107,32 @@ export default {
 					'100%': { transform: 'translateX(0)' }
 				},
 				'glow-pulse': {
-					'0%, 100%': { boxShadow: '0 0 20px hsl(var(--primary) / 0.5)' },
-					'50%': { boxShadow: '0 0 40px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--secondary) / 0.3)' }
+					'0%, 100%': { 
+						boxShadow: '0 0 30px hsl(var(--primary) / 0.6)', 
+						filter: 'brightness(1) saturate(1)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 60px hsl(var(--primary) / 0.9), 0 0 90px hsl(var(--secondary) / 0.5), 0 0 120px hsl(var(--accent) / 0.3)', 
+						filter: 'brightness(1.3) saturate(1.4)' 
+					}
+				},
+				'cyber-spin': {
+					'0%': { transform: 'rotate(0deg) scale(1)' },
+					'25%': { transform: 'rotate(90deg) scale(1.1)' },
+					'50%': { transform: 'rotate(180deg) scale(1)' },
+					'75%': { transform: 'rotate(270deg) scale(0.9)' },
+					'100%': { transform: 'rotate(360deg) scale(1)' }
+				},
+				'matrix-rain': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(100vh)' }
+				},
+				'neon-flicker': {
+					'0%, 100%': { opacity: '1', filter: 'brightness(1)' },
+					'10%': { opacity: '0.8', filter: 'brightness(0.8)' },
+					'20%': { opacity: '1', filter: 'brightness(1.2)' },
+					'30%': { opacity: '0.9', filter: 'brightness(0.9)' },
+					'40%': { opacity: '1', filter: 'brightness(1)' }
 				}
 			},
 			animation: {
@@ -116,7 +143,10 @@ export default {
 				'blink': 'blink 1s infinite',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in': 'slide-in 0.8s ease-out',
-				'glow-pulse': 'glow-pulse 2s ease-in-out infinite'
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'cyber-spin': 'cyber-spin 4s ease-in-out infinite',
+				'matrix-rain': 'matrix-rain 3s linear infinite',
+				'neon-flicker': 'neon-flicker 2s ease-in-out infinite'
 			},
 			fontFamily: {
 				'cyber': ['Orbitron', 'monospace'],
